@@ -39,7 +39,7 @@ app.get("/authenticate", (request, reponse) => {
         `Unauthorized Clinet Certificate <br> Your certificate was issued by ${certificate.issuer.CN} is invalid`
       );
   } else {
-    // 401 -> authorized
+    // 401 -> unauthorized
     response.sendStatus(401);
   }
 });
