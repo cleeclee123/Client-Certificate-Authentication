@@ -5,7 +5,7 @@ const serverUrl = "https://localhost:9999/authenticate";
 let options = { httpsAgent: agent("alice") };
 
 axios
-  .get(serverUrl, opts)
+  .get(serverUrl, options)
   .then((res) => {
     console.log(res.data);
   })

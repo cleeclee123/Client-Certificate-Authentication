@@ -2,10 +2,10 @@ const axios = require("axios");
 const agent = require("./agent");
 
 const serverUrl = "https://localhost:9999/authenticate";
-let opts = { httpsAgent: agent("bob") };
+let options = { httpsAgent: agent("bob") };
 
 axios
-  .get(serverUrl, opts)
+  .get(serverUrl, options)
   .then((res) => {
     console.log(res.data);
   })
