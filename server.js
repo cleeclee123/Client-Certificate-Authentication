@@ -1,4 +1,3 @@
-const { response } = require("express");
 const express = require("express");
 const fileSystem = require("fs");
 const https = require("https");
@@ -17,17 +16,17 @@ const options = {
 const app = express();
 
 // landing page (unauthenticated)
-app.get(~"/", (request, response) => {
+app.get("/", (request, response) => {
   response.send('<a href = "authenticate> Log in with Client Certificate </a>');
 });
 
 // Client page - protected endpoint (authenticate)
-app.get("/authenticate", (request, reponse) => {
+app.get("/authenticate", (request, response) => {
   const certificate = request.connection.getPeerCertificate(true);
 
   // valid client certificate
   if (request.client.authorized) {
-    reponse.send(
+    response.send(
       `Hello ${certificate.subject.CN}, <br> Your certificate was issued by ${certificate.issuer.CN}`
     );
     // invalid client certificate
@@ -40,7 +39,7 @@ app.get("/authenticate", (request, reponse) => {
       );
   } else {
     // 401 -> unauthorized
-    response.sendStatus(401);
+    response.status(401);
   }
 });
 
